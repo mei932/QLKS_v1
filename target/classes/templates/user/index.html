@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Home Page - Samanhua Shop</title>
@@ -8,7 +7,6 @@
   <link th:href="@{/plugins/bootstraps/css/bootstrap.min.css}" rel="stylesheet">
   <link th:href="@{/css/user.css}" rel="stylesheet">
 </head>
-
 <body>
   <div id="root">
     <div th:replace="~{fragment/user-fragment :: header}"></div>
@@ -19,7 +17,7 @@
             <div class="col-3 mx-0 mb-4" th:each="item: ${allPhong}">
               <a th:href="@{|/users/room-details/${item.id}|}" class="d-block">
                 <div class="ratio overflow-hidden ratio-3x4">
-                  <img th:src="${item.imageUrl}" alt="" class="object-fit-cover">
+                  <img th:src="'/img' + ${item.imageUrl}" alt="" class="object-fit-cover">
                 </div>
                 <p class="my-1" th:text="${'Tên phòng: ' + item.tenPhong}"></p>
                 <p class="my-1" th:text="${'Địa chỉ: ' + item.diaChi}"></p>

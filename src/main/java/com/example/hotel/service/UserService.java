@@ -125,4 +125,8 @@ public class UserService {
                     .build())
         .toList();
   }
+
+  public List<BookingRoom> findRoomsByUserId(Long userId) {
+    return bookingRoomRepository.findByUserId(userId);
+  }
 }

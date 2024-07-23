@@ -80,4 +80,14 @@ public class UserController {
     userService.datPhong(bookingRoom);
     return "redirect:/users";
   }
+
+  @GetMapping("/lich-su-dat-phong")
+  public String lichSuDatPhong(Model model, Principal principal) {
+    String name = principal.getName();
+    User user = userService.findUserByUsername(name);
+    Long userId = user.getId();
+    List<BookingRoom> bookingRooms = userService.findRoomsByUserId(userId);
+    model.addAttribute("bookingRooms",bookingRooms);
+    return "user/lich-su-dat-phong";
+  }
 }
