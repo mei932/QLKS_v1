@@ -39,6 +39,11 @@
             text-decoration: none;
             color: black;
         }
+
+        td img {
+            width: 4rem;
+            height: 4rem;
+        }
     </style>
 </head>
 <body>
@@ -51,33 +56,32 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Mã phòng</th>
-                <th>Tên phòng</th>
-                <th>Giá phòng</th>
-                <th>Địa chỉ</th>
-                <th>Hình ảnh</th>
-                <th>Trạng thái</th>
-                <th>Loại phòng</th>
-                <th>Thao tác</th>
+                <th scope="col">ID</th>
+                <th scope="col">Họ tên khách hàng</th>
+                <th scope="col">Số điện thoại</th>
+                <th scope="col">Ngày đến</th>
+                <th scope="col">Ngày đi</th>
+                <th scope="col">Số tiền cọc</th>
+                <th scope="col">Thành tiền</th>
+                <th scope="col">Tên phòng</th>
+                <th scope="col">Hình ảnh phòng</th>
+                <th scope="col">Dịch vụ đã đặt</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="item: ${allPhong}">
-                <td th:text="${item.id}"></td>
-                <td th:text="${item.maPhong}"></td>
-                <td th:text="${item.tenPhong}"></td>
-                <td th:text="${item.giaPhong}"></td>
-                <td th:text="${item.diaChi}"></td>
+            <tr th:each="item: ${bookingRooms}">
+                <th scope="row" th:text="${item.id}"></th>
+                <td th:text="${item.hoTenKH}"></td>
+                <td th:text="${item.SDT}"></td>
+                <td th:text="${item.ngayDen}"></td>
+                <td th:text="${item.ngayDi}"></td>
+                <td class="currency-format" th:text="${item.soTienCoc}"></td>
+                <td class="currency-format" th:text="${item.thanhTien}"></td>
+                <td th:text="${item.phong.tenPhong}"></td>
                 <td>
-                    <img th:src="'/img' + ${item.imageUrl}" alt="" style="width: 100px; height: auto;">
+                    <img th:src="'/img' + ${item.phong.imageUrl}" alt="">
                 </td>
-                <td th:text="${item.tinhTrangPhong}"></td>
-                <td th:text="${item.loaiPhong != null ? item.loaiPhong.getTenLoaiPhong(): ''}"></td>
-                <td>
-                    <a th:href="@{|/admin/suaphong/${item.id}|}">Sửa</a>
-                    <a th:href="@{|/admin/onxoaphong/${item.id}|}">Xóa</a>
-                </td>
+                <td th:text="${item.getListDV()}"></td>
             </tr>
             </tbody>
         </table>

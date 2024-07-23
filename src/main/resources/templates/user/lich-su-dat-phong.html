@@ -22,8 +22,8 @@
                 Lịch sử đặt phòng
               </p>
             </div>
-            <div class="card-body p-0" id="orders__orders">
-              <table class="table table-bordered table-responsive">
+            <div class="card-body p-0 table-responsive" id="orders__orders">
+              <table class="table table-bordered">
                 <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -36,6 +36,7 @@
                   <th scope="col">Tên phòng</th>
                   <th scope="col">Hình ảnh phòng</th>
                   <th scope="col">Dịch vụ đã đặt</th>
+                  <th scope="col" colspan="3">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -52,6 +53,7 @@
                     <img th:src="'/img' + ${item.phong.imageUrl}" alt="">
                   </td>
                   <td th:text="${item.getListDV()}"></td>
+                  <td><a th:href="@{|/on-huy-phong/${item.id}|}">Huỷ phòng</a></td>
                 </tr>
                 </tbody>
               </table>
@@ -66,9 +68,7 @@
 <script th:src="@{/plugins/bootstraps/js/bootstrap.bundle.min.js}"></script>
 <script>
   let elements = document.querySelectorAll(".currency-format");
-  console.log(elements);
   elements.forEach(e => {
-    console.log(e.innerHTML);
     let price = parseInt(e.innerHTML);
     let priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
     e.innerHTML = `${priceFormat}`;

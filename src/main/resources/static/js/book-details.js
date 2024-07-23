@@ -10,5 +10,5 @@ priceElement.innerHTML = `Giá: ${priceFormat}`;
 
 let btnElement = document.querySelector("#book-details__btn");
 btnElement.onclick = () => {
-    window.location.href = `/users/dat-phong/${roomId}`;
+    window.location.href = `/dat-phong/${roomId}`;
 }
