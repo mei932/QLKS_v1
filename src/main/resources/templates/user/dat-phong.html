@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Details - Samanhua Shop</title>
+    <link th:href="@{/img/samanhua-shop.png}" rel="icon" type="image/png">
+    <link th:href="@{/plugins/bootstraps/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/user.css}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="root">
+    <div th:replace="~{fragment/user-fragment :: header}"></div>
+    <div class="container mx-auto my-5">
+        <div class="mb-5 shadow-lg">
+            <div class="row py-5 w-75 align-items-start mx-auto">
+                <div class="col-12">
+                    <form action="#" th:action="@{/users/on-dat-phong}" th:object="${booking_room}" method="post">
+                        <div class="mb-3">
+                            <label for="ngay-den" class="form-label">Ngày đến</label>
+                            <input type="datetime-local" class="form-control" id="ngay-den" th:field="*{ngayDen}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ngay-di" class="form-label">Ngày đi</label>
+                            <input type="datetime-local" class="form-control" id="ngay-di" th:field="*{ngayDi}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="so-tien-coc" class="form-label">Số tiền cọc</label>
+                            <input type="number" class="form-control" id="so-tien-coc" placeholder="" th:field="*{soTienCoc}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="trang-thai" class="form-label">Trạng thái</label>
+                            <select id="trang-thai" class="form-select" th:field="*{trangThai}">
+                                <option value="Trống">Trống</option>
+                                <option value="Đã đặt">Đã đặt</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="CCCD" class="form-label">Căn cước công dân</label>
+                            <input type="text" class="form-control" id="CCCD" placeholder="" th:field="*{CCCD}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ho-ten-kh" class="form-label">Họ tên khách hàng</label>
+                            <input type="text" class="form-control" id="ho-ten-kh" placeholder="" th:field="*{hoTenKH}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="dia-chi" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="dia-chi" placeholder="" th:field="*{diaChi}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gioi-tinh" class="form-label">Giới tính</label>
+                            <select id="gioi-tinh" class="form-select" th:field="*{gioiTinh}">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="SDT" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="SDT" placeholder="" th:field="*{SDT}">
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="form-label">Dịch vụ</label>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-inline-block" th:each="item: ${allDichVu}">
+                                        <input class="form-check-input"
+                                               type="checkbox"
+                                               th:id="${'btn-check-' + item.id}"
+                                               th:field="*{dichVu}"
+                                               th:value="${item.id}">
+                                        <label class="form-check-label"
+                                               th:for="${'btn-check-' + item.id}"
+                                               th:text="${item.tenDV}">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 d-none">
+                            <input type="hidden" class="form-control" id="user" th:field="*{user}" readonly>
+                        </div>
+                        <div class="mb-3 d-none">
+                            <input type="hidden" class="form-control" id="room" th:field="*{phong}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Đặt</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{fragment/user-fragment :: footer}"></div>
+</div>
+<script th:src="@{/plugins/bootstraps/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

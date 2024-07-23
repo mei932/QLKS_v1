@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 30%;
+            background-color: #f2f2f2;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .main-content {
+            width: 70%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragment/sidebar :: sidebar}"></div>
+<div class="main-content">
+    <div id="contentFrame" style="width: 100%; height: 100vh; border: none;">
+        <h1>Quản lý Dịch vụ</h1>
+        <h2>Danh sách Dịch vụ</h2>
+        <a th:href="@{/admin/themdichvu}">Thêm Dịch vụ</a>
+        <table id="dichvuTable" border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Dịch vụ</th>
+                <th>Giá Dịch vụ</th>
+                <th>Mã Dịch vụ</th>
+                <th>Thao tác</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item: ${listDichVu}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.tenDV}"></td>
+                <td th:text="${item.giaDV}"></td>
+                <td th:text="${item.maDV}"></td>
+                <td>
+                    <a th:href="@{|/admin/suadichvu/${item.id}|}">Sửa</a>
+                    <a th:href="@{|/admin/onxoadichvu/${item.id}|}">Xóa</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

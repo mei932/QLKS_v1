@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mysql:8.1.0
+    container_name: mysql-hotel
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hotel
+      # MYSQL_USER: test
+      # MYSQL_PASSWORD: test
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./initdb.d/:/docker-entrypoint-initdb.d/
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  default:
+    name: hotel
+    driver: bridge
