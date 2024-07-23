@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
   private final UserService userService;
 
+  @GetMapping("/register")
+  public String register() {
+      return "register";
+  }
   @Autowired
   public UserController(UserService userService) {
     this.userService = userService;
