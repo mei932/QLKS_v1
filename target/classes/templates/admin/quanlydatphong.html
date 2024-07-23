@@ -87,5 +87,13 @@
         </table>
     </div>
 </div>
+<script>
+    let elements = document.querySelectorAll(".currency-format");
+    elements.forEach(e => {
+        let price = parseInt(e.innerHTML);
+        let priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+        e.innerHTML = `${priceFormat}`;
+    })
+</script>
 </body>
 </html>
