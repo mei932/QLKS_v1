@@ -2,6 +2,7 @@ package com.example.hotel.domain;
 
 import java.util.Date;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -71,6 +72,12 @@ public class BookingRoom {
 
     public BookingRoom(Long id) {
         this.id = id;
+    }
+
+    public String getListDV() {
+        return this.getDichVu().stream()
+                .map(DichVu::getTenDV)
+                .collect(Collectors.joining(", "));
     }
 
     @Override

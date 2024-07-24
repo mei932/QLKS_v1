@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Book Details - Samanhua Shop</title>
@@ -9,7 +8,6 @@
   <link th:href="@{/css/user.css}" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
-
 <body>
   <div id="root">
     <div th:replace="~{fragment/user-fragment :: header}"></div>
@@ -17,18 +15,18 @@
       <div class="product-details mb-5">
         <div class="row w-75 align-items-start mx-auto">
           <div class="col-5">
-            <div class="ratio ratio-1x1 bg-black bg-gradient overflow-hidden">
-              <img alt="" class="product-details-image w-100 object-fit-cover transition" id="book-details__image" th:src=" ${phong.imageUrl}">
+            <div class="ratio ratio-1x1 overflow-hidden">
+              <img alt="" class="product-details-image w-100 object-fit-cover transition" id="book-details__image" th:src="${phong.imageUrl}">
             </div>
           </div>
           <div class="col-7">
             <nav>
               <ol class="breadcrumb" id="book-details__breadcrump">
                 <li class="breadcrumb-item">
-                  <a class="transition" th:href="@{/users}">Home</a>
+                  <a class="transition" th:href="@{/}">Home</a>
                 </li>
                 <li class="breadcrumb-item">
-                  <a class="transition" th:href="@{/users}">Rooms</a>
+                  <a class="transition" th:href="@{/}">Rooms</a>
                 </li>
               </ol>
             </nav>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link th:href="@{/plugins/bootstraps/css/bootstrap.min.css}" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -47,7 +48,7 @@
         <h1>Quản lý Phòng</h1>
         <h2>Danh sách Phòng</h2>
         <a th:href="@{/admin/themphong}">Thêm Phòng</a>
-        <table id="dichvuTable" border="1">
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
@@ -69,7 +70,7 @@
                 <td th:text="${item.giaPhong}"></td>
                 <td th:text="${item.diaChi}"></td>
                 <td>
-                    <img th:src="${item.imageUrl}" alt="Image of ${item.tenPhong}" style="width: 100px; height: auto;">
+                    <img th:src="${item.imageUrl}" alt="" style="width: 100px; height: auto;">
                 </td>
                 <td th:text="${item.tinhTrangPhong}"></td>
                 <td th:text="${item.loaiPhong != null ? item.loaiPhong.getTenLoaiPhong(): ''}"></td>

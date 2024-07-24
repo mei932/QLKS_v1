@@ -11,8 +11,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
@@ -61,11 +64,13 @@ public class PhongController {
   }
 
   @GetMapping("/img")
- public ResponseEntity<Resource> getImg(@RequestParam String fileName ) throws FileNotFoundException
+ public ResponseEntity<?> getImg(@RequestParam String fileName ) throws FileNotFoundException
  {
-  InputStreamResource resource = new InputStreamResource(new FileInputStream(fileName));
+  return phongService.getImage(fileName);
+    // InputStreamResource resource = new InputStreamResource(new FileInputStream(fileName));
+    // System.out.println(resource);
+    // return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(resource);
 
-    return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
  }
 
   @PreAuthorize("hasRole('ADMIN')")
@@ -104,4 +109,5 @@ public class PhongController {
   public ResponseEntity<?> datPhong(@PathVariable(name = "phongId") long phongId) {
     return phongService.datPhong(phongId);
   }
+
 }

@@ -15,7 +15,7 @@
         <div class="mb-5 shadow-lg">
             <div class="row py-5 w-75 align-items-start mx-auto">
                 <div class="col-12">
-                    <form action="#" th:action="@{/users/on-dat-phong}" th:object="${booking_room}" method="post">
+                    <form action="#" th:action="@{/on-dat-phong}" th:object="${booking_room}" method="post">
                         <div class="mb-3">
                             <label for="ngay-den" class="form-label">Ngày đến</label>
                             <input type="datetime-local" class="form-control" id="ngay-den" th:field="*{ngayDen}">
@@ -27,13 +27,6 @@
                         <div class="mb-3">
                             <label for="so-tien-coc" class="form-label">Số tiền cọc</label>
                             <input type="number" class="form-control" id="so-tien-coc" placeholder="" th:field="*{soTienCoc}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="trang-thai" class="form-label">Trạng thái</label>
-                            <select id="trang-thai" class="form-select" th:field="*{trangThai}">
-                                <option value="Trống">Trống</option>
-                                <option value="Đã đặt">Đã đặt</option>
-                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="CCCD" class="form-label">Căn cước công dân</label>

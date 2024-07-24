@@ -1,11 +1,13 @@
 package com.example.hotel.service;
 
+import com.example.hotel.domain.BookingRoom;
 import com.example.hotel.domain.DichVu;
 import com.example.hotel.domain.LoaiPhong;
 import com.example.hotel.domain.Phong;
 import com.example.hotel.dto.DichVuDto;
 import com.example.hotel.dto.LoaiPhongDto;
 import com.example.hotel.dto.PhongDto;
+import com.example.hotel.repository.BookingRoomRepository;
 import com.example.hotel.repository.DichVuRepository;
 import com.example.hotel.repository.LoaiPhongRepository;
 import com.example.hotel.repository.PhongRepository;
@@ -20,12 +22,14 @@ public class AdminService {
     private final DichVuRepository dichVuRepository;
     private final PhongRepository phongRepository;
     private final LoaiPhongRepository loaiPhongRepository;
+    private final BookingRoomRepository bookingRoomRepository;
 
     @Autowired
-    public AdminService(DichVuRepository dichVuRepository, PhongRepository phongRepository, LoaiPhongRepository loaiPhongRepository) {
+    public AdminService(DichVuRepository dichVuRepository, PhongRepository phongRepository, LoaiPhongRepository loaiPhongRepository, BookingRoomRepository bookingRoomRepository) {
         this.dichVuRepository = dichVuRepository;
         this.phongRepository = phongRepository;
         this.loaiPhongRepository = loaiPhongRepository;
+        this.bookingRoomRepository = bookingRoomRepository;
     }
 
     public List<DichVuDto> findAllDichVu() {
@@ -153,5 +157,9 @@ public class AdminService {
 
     public void xoaPhong(long id) {
         phongRepository.deleteById(id);
+    }
+
+    public List<BookingRoom> findAllBookingRooms() {
+        return bookingRoomRepository.findAllWithDichVu();
     }
 }

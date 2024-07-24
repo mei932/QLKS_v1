@@ -22,7 +22,7 @@
     <script>
         document.getElementById('loginButton').addEventListener('click', function(event) {
             event.preventDefault(); // Ngăn chặn hành vi mặc định của nút submit
-            window.location.href = '/users/login'; // Điều hướng sang trang login.html
+            window.location.href = '/login'; // Điều hướng sang trang login.html
         });
 
         document.getElementById('registerForm').addEventListener('submit', function(event) {
@@ -31,7 +31,7 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            fetch('/users/register', {
+            fetch('register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -42,7 +42,7 @@
             .then(data => {
                 alert(data);
                 if (data === 'User registered successfully!') {
-                    window.location.href = '/users/login';
+                    window.location.href = '/login';
                 }
             })
             .catch(error => console.error('Error:', error));

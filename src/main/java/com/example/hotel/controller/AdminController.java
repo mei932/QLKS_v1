@@ -1,10 +1,12 @@
 package com.example.hotel.controller;
 
+import com.example.hotel.domain.BookingRoom;
 import com.example.hotel.dto.DichVuDto;
 import com.example.hotel.dto.LoaiPhongDto;
 import com.example.hotel.dto.PhongDto;
 import com.example.hotel.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
+@PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
     private final AdminService adminService;
 
@@ -106,5 +109,12 @@ public class AdminController {
     public String onXoaPhong(@PathVariable(name = "id") long id) {
         adminService.xoaPhong(id);
         return "redirect:/admin/phong";
+    }
+
+    @GetMapping("/quanlydatphong")
+    public String quanLyDatPhong(Model model) {
+        List<BookingRoom> bookingRooms = adminService.findAllBookingRooms();
+        model.addAttribute("bookingRooms", bookingRooms);
+        return "/admin/quanlydatphong";
     }
 }

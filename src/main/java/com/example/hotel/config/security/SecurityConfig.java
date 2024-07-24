@@ -30,16 +30,9 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(
-            authorize ->
-                authorize
-                    .requestMatchers("/admin/**")
-                    .hasRole("ADMIN")
-                    .requestMatchers("/user/**")
-                    .hasRole("USER")
-                    .requestMatchers("/login", "/users/register", "/api/phong/upload-image","/api/phong/img")
-                    .permitAll()
+            authorize -> authorize
                     .anyRequest()
-                    .authenticated())
+                    .permitAll())
         .formLogin(
             form ->
                 form.loginPage("/login")
@@ -65,7 +58,7 @@ public class SecurityConfig {
           authentication.getAuthorities().stream()
                   .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))
               ? "/admin"
-              : "/users";
+              : "/";
       response.sendRedirect(redirectUrl);
     };
   }

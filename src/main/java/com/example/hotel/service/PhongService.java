@@ -1,5 +1,9 @@
 package com.example.hotel.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -8,6 +12,8 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,6 +28,8 @@ public class PhongService {
 
   private final PhongRepository phongRepository;
   private final UserRepository userRepository;
+
+  private static final String path = Paths.get("").toAbsolutePath() + "/src/main/resources/static/";
 
   @Autowired
   public PhongService(PhongRepository phongRepository, UserRepository userRepository) {
@@ -80,4 +88,23 @@ public class PhongService {
     BeanUtils.copyProperties(entity, dto);
     return dto;
   }
+
+ public ResponseEntity<?> getImage(String url) {
+  String filePath = path + "img/" + url;
+  Path path1 = Path.of(filePath);
+  if (!Files.exists(path1)) {
+      return ResponseEntity.notFound().build();
+  }
+
+  try {
+      byte[] bytes = Files.readAllBytes(path1);
+      Resource resource = new ByteArrayResource(bytes);
+      String contentType = Files.probeContentType(path1);
+      return ResponseEntity.ok()
+              .header("Content-Type", contentType)
+              .body(resource);
+  } catch (IOException e) {
+      return ResponseEntity.internalServerError().build();
+  }
+}
 }

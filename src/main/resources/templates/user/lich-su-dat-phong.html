@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Details - Samanhua Shop</title>
+  <link th:href="@{/img/samanhua-shop.png}" rel="icon" type="image/png">
+  <link th:href="@{/plugins/bootstraps/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/css/user.css}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="root">
+  <div th:replace="~{fragment/user-fragment :: header}"></div>
+  <div class="container">
+    <div class="order my-5">
+      <div class="row">
+        <div class="col-12">
+          <div class="user-card card bg-transparent border-0">
+            <div class="card-header bg-orange bg-gradient border-0">
+              <p class="card-title mb-0">
+                <i class="me-2 fa-solid fa-receipt text-black"></i>
+                Lịch sử đặt phòng
+              </p>
+            </div>
+            <div class="card-body p-0 table-responsive" id="orders__orders">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Họ tên khách hàng</th>
+                  <th scope="col">Số điện thoại</th>
+                  <th scope="col">Ngày đến</th>
+                  <th scope="col">Ngày đi</th>
+                  <th scope="col">Số tiền cọc</th>
+                  <th scope="col">Thành tiền</th>
+                  <th scope="col">Tên phòng</th>
+                  <th scope="col">Hình ảnh phòng</th>
+                  <th scope="col">Dịch vụ đã đặt</th>
+                  <th scope="col" colspan="3">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item: ${bookingRooms}">
+                  <th scope="row" th:text="${item.id}"></th>
+                  <td th:text="${item.hoTenKH}"></td>
+                  <td th:text="${item.SDT}"></td>
+                  <td th:text="${item.ngayDen}"></td>
+                  <td th:text="${item.ngayDi}"></td>
+                  <td class="currency-format" th:text="${item.soTienCoc}"></td>
+                  <td class="currency-format" th:text="${item.thanhTien}"></td>
+                  <td th:text="${item.phong.tenPhong}"></td>
+                  <td>
+                    <img th:src="${item.phong.imageUrl}" alt="">
+                  </td>
+                  <td th:text="${item.getListDV()}"></td>
+                  <td><a th:href="@{|/on-huy-phong/${item.id}|}">Huỷ phòng</a></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div th:replace="~{fragment/user-fragment :: footer}"></div>
+</div>
+<script th:src="@{/plugins/bootstraps/js/bootstrap.bundle.min.js}"></script>
+<script>
+  let elements = document.querySelectorAll(".currency-format");
+  elements.forEach(e => {
+    let price = parseInt(e.innerHTML);
+    let priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+    e.innerHTML = `${priceFormat}`;
+  })
+</script>
+</body>
+</html>
