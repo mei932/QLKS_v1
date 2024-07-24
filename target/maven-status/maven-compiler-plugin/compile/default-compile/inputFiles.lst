@@ -2,7 +2,6 @@ D:\QLKS_v1\src\main\java\com\example\hotel\config\InitDatabase.java
 D:\QLKS_v1\src\main\java\com\example\hotel\config\security\MyUserDetailsService.java
 D:\QLKS_v1\src\main\java\com\example\hotel\config\security\SecurityConfig.java
 D:\QLKS_v1\src\main\java\com\example\hotel\controller\AdminController.java
-D:\QLKS_v1\src\main\java\com\example\hotel\controller\AuthenticationController.java
 D:\QLKS_v1\src\main\java\com\example\hotel\controller\DichVuController.java
 D:\QLKS_v1\src\main\java\com\example\hotel\controller\LoaiPhongController.java
 D:\QLKS_v1\src\main\java\com\example\hotel\controller\PhongController.java
@@ -25,8 +24,6 @@ D:\QLKS_v1\src\main\java\com\example\hotel\repository\PhongRepository.java
 D:\QLKS_v1\src\main\java\com\example\hotel\repository\RoleRepository.java
 D:\QLKS_v1\src\main\java\com\example\hotel\repository\UserRepository.java
 D:\QLKS_v1\src\main\java\com\example\hotel\service\AdminService.java
-D:\QLKS_v1\src\main\java\com\example\hotel\service\AuthenticationService.java
-D:\QLKS_v1\src\main\java\com\example\hotel\service\Booking.java
 D:\QLKS_v1\src\main\java\com\example\hotel\service\DichVuService.java
 D:\QLKS_v1\src\main\java\com\example\hotel\service\LoaiPhongService.java
 D:\QLKS_v1\src\main\java\com\example\hotel\service\PhongService.java

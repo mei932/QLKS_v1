@@ -1,4 +1,3 @@
-com\example\hotel\controller\AuthenticationController.class
 com\example\hotel\dto\PhongDto.class
 com\example\hotel\dto\UserDto.class
 com\example\hotel\service\AdminService.class
@@ -11,7 +10,6 @@ com\example\hotel\controller\PhongController.class
 com\example\hotel\domain\DichVu$DichVuBuilder.class
 com\example\hotel\config\security\MyUserDetailsService.class
 com\example\hotel\controller\DichVuController.class
-com\example\hotel\service\AuthenticationService.class
 com\example\hotel\domain\Phong$PhongBuilder.class
 com\example\hotel\domain\LoaiPhong$LoaiPhongBuilder.class
 com\example\hotel\service\DichVuService.class
