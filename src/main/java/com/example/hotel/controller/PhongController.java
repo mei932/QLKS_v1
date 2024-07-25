@@ -66,7 +66,8 @@ public class PhongController {
   @GetMapping("/img")
  public ResponseEntity<?> getImg(@RequestParam String fileName ) throws FileNotFoundException
  {
-  return phongService.getImage(fileName);
+    
+    return phongService.getImage(fileName);
     // InputStreamResource resource = new InputStreamResource(new FileInputStream(fileName));
     // System.out.println(resource);
     // return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(resource);

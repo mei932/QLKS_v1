@@ -1,5 +1,0 @@
-# Created at 2024-07-23T11:40:35.678
-Boot Manifest-JAR contains absolute paths in classpath 'D:\QLKS_v1\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-
